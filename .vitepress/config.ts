@@ -13,7 +13,7 @@ export default defineConfig({
     nav: [
       { text: '播放器推荐', link: '/features/players' },
       { text: '第一次使用', link: '/getting-started' },
-      { text: '用户使用', link: '/features/overview' },
+      { text: '控制台功能', link: '/features/overview' },
       { text: 'Telegram Bot', link: '/features/telegram-bot' },
       { text: 'FAQ', link: '/faq' }
     ],
@@ -22,27 +22,30 @@ export default defineConfig({
         text: '开始',
         items: [
           { text: '首页', link: '/' },
-          { text: '第一次使用', link: '/getting-started' },
+          { text: '第一次使用', link: '/getting-started' }
         ]
       },
       {
         text: '播放器推荐',
         items: [
-          { text: '播放器推荐', link: '/features/players' },
+          { text: '播放器推荐', link: '/features/players' }
         ]
       },
       {
-        text: '用户使用',
+        text: '控制台功能',
         items: [
           { text: '功能地图', link: '/features/overview' },
           { text: '控制台总览', link: '/features/user-console' },
-          { text: '我的账号', link: '/features/my-account' },
+          { text: '概览', link: '/features/dashboard' },
+          { text: '账号中心', link: '/features/account-center' },
+          { text: '我的画像', link: '/features/profile-analytics' },
+          { text: '登录、注册与找回密码', link: '/features/account-access' },
           { text: '订阅管理', link: '/features/subscriptions' },
           { text: '播放排行榜', link: '/features/rankings' },
           { text: '媒体库', link: '/features/library' },
           { text: '追剧日历', link: '/features/tv-calendar' },
           { text: '续费中心', link: '/features/payments' },
-          { text: 'Telegram Bot', link: '/features/telegram-bot' },
+          { text: 'Telegram Bot', link: '/features/telegram-bot' }
         ]
       },
       {

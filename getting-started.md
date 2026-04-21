@@ -18,18 +18,26 @@
 
 ## 第一次登录先做这三件事
 
-### 1. 先看我的账号
+### 1. 先看概览
 
-打开 [我的账号](./features/my-account.md)，确认：
+打开 [概览](./features/dashboard.md)，确认：
 
-- 用户名是否正确
-- Emby ID 是否已经关联
 - 当前账号是否有效
-- 还剩多少天
+- 到期时间是否正常
+- Telegram 是否已经绑定
+- 服务器入口是否可见
 
 如果你一上来就发现自己已经过期，不要乱翻，直接去 [续费中心](./features/payments.md)。
 
-### 2. 决定你接下来要做什么
+### 2. 再看账号中心
+
+打开 [账号中心](./features/account-center.md)，处理这三类事情：
+
+- 补齐联系邮箱
+- 修改密码
+- 生成 Telegram 绑定验证码
+
+### 3. 决定你接下来走哪条路径
 
 你通常会落到下面几条路径之一：
 
@@ -39,19 +47,17 @@
 - 想申请想看的片：先看 [订阅管理](./features/subscriptions.md)
 - 想追连载：先看 [追剧日历](./features/tv-calendar.md)
 - 想恢复或延长账号：先看 [续费中心](./features/payments.md)
-
-### 3. 如果你要用 Bot，尽早绑定
-
-打开 [Telegram Bot](./features/telegram-bot.md)，按文档完成绑定。绑定后，很多查询和轻量操作都可以直接在聊天窗口里完成。
+- 想把高频操作搬到 Telegram：看 [Telegram Bot](./features/telegram-bot.md)
 
 ## 最短熟悉路径
 
 如果你只想用最短时间把整站摸清，建议按这个顺序读：
 
 1. [控制台总览](./features/user-console.md)
-2. [我的账号](./features/my-account.md)
-3. [续费中心](./features/payments.md)
-4. [Telegram Bot](./features/telegram-bot.md)
+2. [概览](./features/dashboard.md)
+3. [账号中心](./features/account-center.md)
+4. [续费中心](./features/payments.md)
+5. [Telegram Bot](./features/telegram-bot.md)
 
 ## 常见第一步误区
 
@@ -59,9 +65,11 @@
 - 媒体库不是完整搜索页，它更适合看最近入库
 - 订阅管理是“提需求”，不是“立即观看”
 - Bot 是第二入口，不是主站替代品
+- 登录、注册和找回密码是独立入口，不在控制台内部
 
 ## 建议阅读顺序
 
+- [登录、注册与找回密码](./features/account-access.md)
 - [功能总览](./features/overview.md)
 - [控制台总览](./features/user-console.md)
 - [Telegram Bot](./features/telegram-bot.md)
