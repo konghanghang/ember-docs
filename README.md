@@ -28,8 +28,8 @@ npm run docs:preview
 
 ## GitHub Pages
 
-仓库默认按 `https://<username>.github.io/<repository>/` 形式发布。
+当前按自定义域名发布，静态资源基路径使用 `/`。
 
-- 工作流会把 `VITEPRESS_BASE` 设置为 `/<repository>/`
-- 如果后续改成自定义域名，需要把工作流里的 `VITEPRESS_BASE` 改成 `/`
+- 工作流会把 `VITEPRESS_BASE` 设置为 `/`
+- 如果后续改回 `https://<username>.github.io/<repository>/` 形式发布，需要把工作流里的 `VITEPRESS_BASE` 改成 `/<repository>/`
 - 仓库设置里要把 Pages 的 Source 设成 `GitHub Actions`
