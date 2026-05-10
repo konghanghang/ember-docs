@@ -73,3 +73,7 @@
 - [功能总览](./features/overview.md)
 - [控制台总览](./features/user-console.md)
 - [Telegram Bot](./features/telegram-bot.md)
+
+## 不是普通用户？
+
+想自部署 Ember 或贡献代码：看 [开发者指南](./developer/)。

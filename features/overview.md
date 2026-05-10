@@ -57,3 +57,4 @@
 - [播放器推荐](./players.md)
 - [Telegram Bot](./telegram-bot.md)
 - [快速开始](../getting-started.md)
+- [开发者指南](../developer/)
