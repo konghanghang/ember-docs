@@ -3,15 +3,15 @@ layout: home
 
 hero:
   name: Ember
-  text: Emby 用户管理系统使用手册
-  tagline: 先完成账号接入，再熟悉控制台菜单，最后按你的实际问题进入对应手册
+  text: Emby 用户管理系统
+  tagline: 用户找操作，开发者找部署与架构。两个入口，各自对路。
   actions:
     - theme: brand
-      text: 第一次使用
+      text: 我是用户
       link: /getting-started
     - theme: alt
-      text: 控制台功能
-      link: /features/overview
+      text: 我要部署或开发
+      link: /developer/
 
 features:
   - title: 我第一次登录该做什么
@@ -20,12 +20,20 @@ features:
     details: 直接看登录、注册与找回密码，先把账号接入链路走通。
   - title: 我想看片、找片或续费
     details: 再进入媒体库、订阅管理、追剧日历、续费中心这些高频页面。
+  - title: 我要把 Ember 部署起来
+    details: Docker Compose 一把梭，必填密钥怎么生成、首次登录怎么改密、Bot 怎么开。
+  - title: 我想理解 Ember 的架构
+    details: 三大服务边界、五个外部集成、数据流和仓库地图，5 分钟读懂。
+  - title: 我想给 Ember 提 PR 或反馈问题
+    details: 贡献指南、Issue / PR 模板、协议，全在开发者指南里。
 ---
 
-# Ember 使用首页
+# Ember 文档首页
 
-这不是开发文档，也不是部署文档。  
-它只负责一件事：帮你作为普通用户，尽快找到自己下一步该点哪里。
+这套站点分两个入口：
+
+- **用户指南**：你是 Ember 的使用者，想知道菜单怎么用、播放器装哪个、Bot 怎么绑定，就走这里。
+- **开发者指南**：你想自部署、二次开发或给项目提 PR，就走 [开发者指南](./developer/)。
 
 ## 你可以直接从这里分流
 
@@ -35,8 +43,9 @@ features:
 - 我先装哪个播放器：看 [播放器推荐](./features/players.md)
 - 我想用 Telegram Bot：看 [Telegram Bot](./features/telegram-bot.md)
 - 我想进群或看通知：看 [社群与通知](./community.md)
+- 我要部署 Ember 或贡献代码：看 [开发者指南](./developer/)
 
-## 最短阅读顺序
+## 最短阅读顺序（用户）
 
 如果你是第一次接触这个站，建议这样看：
 
@@ -45,6 +54,16 @@ features:
 3. [概览](./features/dashboard.md)
 4. [账号中心](./features/account-center.md)
 5. [Telegram Bot](./features/telegram-bot.md)
+
+## 最短阅读顺序（开发者）
+
+如果你想自部署或上手 Ember 代码：
+
+1. [开发者总入口](./developer/)
+2. [架构总览](./developer/architecture/overview.md)
+3. [Docker Compose 部署](./developer/deployment/docker-compose.md)
+4. [本地开发环境](./developer/development/setup.md)
+5. [贡献指南](./developer/contributing.md)
 
 ## 高频操作
 
@@ -63,7 +82,10 @@ features:
 - 想快速学会网站菜单怎么用的用户
 - 想知道 Bot 能做什么的用户
 - 想找官网、聊天频道和入库通知入口的用户
+- 想自部署 Ember、读懂架构、参与贡献的开发者
 
 ## 说明
 
-这套目录只保留普通用户视角，不讲内部实现，也不讲部署。
+- 用户指南只面向普通用户，不写部署、不写实现。
+- 开发者指南只面向公开使用者、部署者、贡献者，深度内部细节去主仓 [`konghanghang/ember`](https://github.com/konghanghang/ember) 看。
+- 两个入口互不替代，各走各路。
