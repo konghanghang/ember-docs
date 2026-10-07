@@ -11,7 +11,6 @@
 - [我的画像](./profile-analytics.md)
 - [订阅管理](./subscriptions.md)
 - [播放排行榜](./rankings.md)
-- [媒体库](./library.md)
 - [追剧日历](./tv-calendar.md)
 - [续费中心](./payments.md)
 
@@ -38,7 +37,7 @@
 
 ### 我想找内容、提需求
 
-1. [媒体库](./library.md)
+1. [概览](./dashboard.md) 里的最近入库
 2. [播放排行榜](./rankings.md)
 3. [订阅管理](./subscriptions.md)
 4. [追剧日历](./tv-calendar.md)
@@ -47,6 +46,7 @@
 
 - Ember 的主入口是统一控制台。
 - 过期用户仍然能看到概览、账号中心和续费入口，但服务器访问等能力会降级。
+- 本站套餐分成公益和公费。公益需要保持最近 30 天内有观看记录，详见 [续费中心](./payments.md)。
 
 ## 相关文档
 

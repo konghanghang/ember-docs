@@ -19,11 +19,11 @@ features:
   - title: 我还没有账号或忘了密码
     details: 直接看登录、注册与找回密码，先把账号接入链路走通。
   - title: 我想看片、找片或续费
-    details: 再进入媒体库、订阅管理、追剧日历、续费中心这些高频页面。
+    details: 再进入概览里的最近入库、订阅管理、追剧日历、续费中心这些高频页面。
   - title: 我要把 Ember 部署起来
     details: Docker Compose 一把梭，必填密钥怎么生成、首次登录怎么改密、Bot 怎么开。
   - title: 我想理解 Ember 的架构
-    details: 三大服务边界、五个外部集成、数据流和仓库地图，5 分钟读懂。
+    details: 服务边界、外部集成、Playback Gateway、数据流和仓库地图，5 分钟读懂。
   - title: 我想给 Ember 提 PR 或反馈问题
     details: 贡献指南、Issue / PR 模板、协议，全在开发者指南里。
 ---
@@ -69,7 +69,7 @@ features:
 
 - 想查账号状态：看 [概览](./features/dashboard.md)
 - 想改邮箱、密码或绑定 Bot：看 [账号中心](./features/account-center.md)
-- 想看片：看 [媒体库](./features/library.md)
+- 想看最近入库：看 [概览](./features/dashboard.md)
 - 想找热门内容：看 [播放排行榜](./features/rankings.md)
 - 想申请想看的内容：看 [订阅管理](./features/subscriptions.md)
 - 想追更新：看 [追剧日历](./features/tv-calendar.md)

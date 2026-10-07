@@ -1,6 +1,6 @@
 # 外部集成
 
-Ember 接了五个外部系统。这一页只讲它们承担什么角色、被谁调用、需要哪些配置入口，不讲实现细节。
+Ember 接了这些外部系统。这一页只讲它们承担什么角色、被谁调用、需要哪些配置入口，不讲实现细节。
 
 ## Emby
 
@@ -79,6 +79,21 @@ Telegram Bot 平台。
 - `WEBHOOK_URL`（webhook 模式必填，公网 HTTPS）
 - `TELEGRAM_ADMIN_CHAT_ID` / `TELEGRAM_GROUP_CHAT_ID`（设置中心托管，env 仅作启动期兜底）
 
+## 115（可选）
+
+只有启用 Playback Gateway 时才会走到这条路径。正常 Emby 播放仍是基线。
+
+**承担的角色**：
+
+- 按站点配置，把部分播放加速到 115 直连
+- 任一步失败时，合法用户回退原始 Emby 播放
+
+**调用方**：Playback Gateway。用户在账号中心绑定个人 Cookie；管理员在控制台维护共享账号。
+
+**关键配置**：设置中心的 Emby 地址必须指向 Gateway 能访问的原始 Emby。Gateway 还需要 `REDIS_URL`。Cookie 只写不回显。
+
+更细的播放链路看主仓 [115 端到端流程](https://github.com/konghanghang/ember/blob/master/docs/reference/p115-playback-end-to-end-flow.md)。
+
 ## 想看每项配置的完整字典
 
 本页只列「集成是什么、谁调用、必需哪些配置」。完整字典（敏感性、是否需重启、设置中心 vs 环境变量边界）去主仓真相源：
@@ -92,3 +107,4 @@ Telegram Bot 平台。
 - [配置参考](../deployment/configuration.md)
 - [配置参考（主仓真相源）](https://github.com/konghanghang/ember/blob/master/docs/reference/configuration-reference.md)
 - [系统架构（主仓）](https://github.com/konghanghang/ember/blob/master/docs/system-architecture.md)
+- [115 端到端流程（主仓）](https://github.com/konghanghang/ember/blob/master/docs/reference/p115-playback-end-to-end-flow.md)

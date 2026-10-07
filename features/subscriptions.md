@@ -64,5 +64,5 @@
 
 ## 相关文档
 
-- [媒体库](./library.md)
+- [概览](./dashboard.md)
 - [追剧日历](./tv-calendar.md)

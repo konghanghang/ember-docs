@@ -7,7 +7,8 @@
 - **Go 1.23+**：API 服务
 - **Node.js 18+ / npm**：Web 服务
 - **Python 3.11**：Bot 服务（建议用虚拟环境）
-- **PostgreSQL 15**：本地直装或通过 Docker 启动均可
+- **PostgreSQL 16**：本地直装或通过 Docker 启动均可（Compose 默认 `postgres:16-alpine`）
+- **Redis**：只在本地跑 Playback Gateway 时需要
 - **Docker / Docker Compose**：用于一键起 PostgreSQL，或验证完整 Compose 链路
 - **make**：跑 Makefile 中的常用命令
 
@@ -63,11 +64,21 @@ API 启动期会自动应用全部迁移，不用手工跑 SQL。
 
 ```bash
 cd services/api
-go run cmd/server/main.go
+go run ./cmd/ember api
 # 或 make dev-api（从仓库根目录）
 ```
 
 端口 `8080`。健康检查 `http://localhost:8080/health`。
+
+Playback Gateway 与 API 共用同一二进制：
+
+```bash
+cd services/api
+go run ./cmd/ember gateway
+# 或 make dev-gateway
+```
+
+端口 `8081`。本地 Gateway 还需要 Redis，并保证 `REDIS_URL` 可连。
 
 ### Web
 
@@ -118,7 +129,7 @@ TELEGRAM_UPDATE_MODE=polling
 | `make help` | 列出所有 target |
 | `make init` | 初始化目录与 `.env` |
 | `make setup` | 安装三服务依赖 |
-| `make dev-api` / `make dev-web` / `make dev-bot` | 分服务启动 |
+| `make dev-api` / `make dev-gateway` / `make dev-web` / `make dev-bot` | 分服务启动 |
 | `make build-api` / `make build-web` | 构建产物 |
 | `make test-api` / `make test-web` / `make test-bot` / `make test` | 跑测试 |
 | `make docker-up` / `make docker-down` / `make docker-logs` | Compose 管理 |

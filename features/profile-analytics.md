@@ -70,5 +70,5 @@
 ## 相关文档
 
 - [播放排行榜](./rankings.md)
-- [媒体库](./library.md)
+- [概览](./dashboard.md)
 - [控制台总览](./user-console.md)

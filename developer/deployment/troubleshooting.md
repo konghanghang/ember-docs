@@ -20,6 +20,13 @@ docker compose logs --tail=100 ember-bot
 curl http://localhost:8000/health
 ```
 
+启用 Gateway 时再加：
+
+```bash
+docker compose logs --tail=100 ember-gateway
+curl http://127.0.0.1:8081/health
+```
+
 报错抄清楚再继续。
 
 ## 1. 容器启动失败

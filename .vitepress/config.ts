@@ -27,7 +27,6 @@ const userSidebar = [
       { text: '登录、注册与找回密码', link: '/features/account-access' },
       { text: '订阅管理', link: '/features/subscriptions' },
       { text: '播放排行榜', link: '/features/rankings' },
-      { text: '媒体库', link: '/features/library' },
       { text: '追剧日历', link: '/features/tv-calendar' },
       { text: '续费中心', link: '/features/payments' },
       { text: 'Telegram Bot', link: '/features/telegram-bot' }

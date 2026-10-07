@@ -10,7 +10,7 @@ Ember 的配置分三类。这一页只讲分类、必填项与重要边界，�
    - 修改要重启容器才生效
 
 2. **API 运行期数据库配置（设置中心托管）**
-   - 由管理员在 `/admin/settings` 在线修改
+   - 由管理员在 `/console/settings` 在线修改
    - 落库到 `settings` 表
    - 大多数改完即时生效；调度类（cron）改完需要重启 API
 
@@ -52,10 +52,12 @@ Ember 的配置分三类。这一页只讲分类、必填项与重要边界，�
 | `TURNSTILE_SECRET_KEY` | 启用 Turnstile 登录人机校验时必填，**只能走环境变量** |
 | `CRON_ENABLED` | 是否启用 API 内置 cron，默认 `true` |
 | `RANKING_CRON_ENABLED` | 是否启用排行榜 cron，默认 `false` |
+| `REDIS_URL` | 启用 Playback Gateway 时使用；默认指向 Compose 内置 Redis |
+| `PLAYBACK_GATEWAY_PORT` | Gateway 宿主机回环映射端口，默认 `8081` |
 
 ## 设置中心托管的配置
 
-下面这些项已经从 env 迁到了设置中心数据库，**不要再写进 `.env`**。首次启动后进 `/admin/settings` 补齐：
+下面这些项已经从 env 迁到了设置中心数据库，**不要再写进 `.env`**。首次启动后进 `/console/settings` 补齐：
 
 - 媒体集成：`EMBY_URL`、`EMBY_API_KEY`、`TMDB_API_KEY`、`MOVIEPILOT_URL`、`MOVIEPILOT_API_KEY`
 - 邮件：`SMTP_HOST` / `SMTP_PORT` / `SMTP_USERNAME` / `SMTP_PASSWORD` / `SMTP_FROM` 与验证码限流参数

@@ -11,8 +11,9 @@
 
 不需要：
 
-- 数据库（Compose 会自带 PostgreSQL）
+- 数据库（Compose 会自带 PostgreSQL 16）
 - 手动跑 SQL（`ember-api` 启动期会自动应用迁移）
+- 默认也不需要 Redis 或 Playback Gateway
 
 ## 5 步部署
 
@@ -89,7 +90,7 @@ docker compose logs ember-api | grep "临时口令"
 
 - 用户名 `admin` + 临时口令 / 你设置的 `ADMIN_PASSWORD`
 - 系统会强制要求第一次登录立刻改密
-- 改完密码后进 `/admin/settings` 补齐 Emby / TMDB / SMTP 等运行期配置（这部分由设置中心托管，可在线修改无需重启）
+- 改完密码后进 `/console/settings` 补齐 Emby / TMDB / SMTP 等运行期配置（这部分由设置中心托管，可在线修改无需重启）
 
 ## 启用 Telegram Bot
 
@@ -103,9 +104,25 @@ docker compose logs ember-api | grep "临时口令"
    ```bash
    docker compose --profile bot up -d
    ```
-3. 登录到 `/admin/settings` 补齐 `TELEGRAM_ADMIN_CHAT_ID` 与 `TELEGRAM_GROUP_CHAT_ID`。
+3. 登录到 `/console/settings` 补齐 `TELEGRAM_ADMIN_CHAT_ID` 与 `TELEGRAM_GROUP_CHAT_ID`。
 
 如果还没准备好公网域名，可以临时用 `polling` 模式（在 `.env` 把 `TELEGRAM_UPDATE_MODE` 改为 `polling`）。`polling` 仅适合单实例。
+
+## 启用 Playback Gateway
+
+`ember-gateway` 通过 `profiles: ["gateway"]` 控制，默认不启动。它和 API 使用同一个 `EMBER_API_IMAGE`，只是进程子命令改成 `gateway`。启用时 Compose 会同时拉起 Redis。
+
+1. 先按上面的默认路径把 API / Web 跑起来，并在 `/console/settings` 填好原始 Emby 地址和 API Key。
+2. 确认 `.env` 里 `EMBER_API_IMAGE` 对 API 和 Gateway 是同一个 tag。
+3. 启动：
+
+   ```bash
+   docker compose --profile gateway up -d
+   ```
+
+Gateway 监听容器内 `8081`，只映射到宿主机 `127.0.0.1:${PLAYBACK_GATEWAY_PORT:-8081}`。公网入口由你自己的反向代理负责，不要把 Gateway 端口直接暴露到公网。
+
+当前只支持单 Gateway，不要 `--scale`。Redis 只保存可丢失的播放租约和转存配额。
 
 ## 确认服务正常
 
@@ -116,11 +133,14 @@ docker compose ps
 curl http://localhost:8080/health
 # 启用 Bot 时再加：
 curl http://localhost:8000/health
+# 启用 Gateway 时再加：
+curl http://127.0.0.1:8081/health
 ```
 
 预期：
 
-- `postgres`、`ember-api`、`ember-web` 三个容器都是 `Up`（启用 Bot 时多一个 `ember-bot`）
+- `postgres`、`ember-api`、`ember-web` 三个容器都是 `Up`
+- 启用 Bot 时多一个 `ember-bot`；启用 Gateway 时多 `ember-gateway` 和 `redis`
 - `GET http://localhost:8080/health` 返回 `200`
 - 浏览器打开 `http://localhost` 能看到登录页
 

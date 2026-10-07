@@ -17,7 +17,14 @@ docker compose pull
 docker compose --profile bot up -d
 ```
 
-不需要任何手工 SQL。`ember-api` 启动期会自动应用未应用的迁移。
+启用 Playback Gateway 时，API 与 Gateway 必须使用同一个 `EMBER_API_IMAGE`：
+
+```bash
+docker compose pull
+docker compose --profile gateway up -d
+```
+
+不需要任何手工 SQL。`ember-api` 启动期会自动应用未应用的迁移。先确认 API 的 `[Migrate]` 完成，再把入口切回去。
 
 ## 数据库迁移如何工作
 
@@ -76,13 +83,14 @@ Ember 的迁移是 forward-only：
 
 如果旧版 API 拒绝在新 schema 上启动（比如校验失败），唯一可行的方案是从备份恢复数据库。备份方法见主仓 [部署排障](https://github.com/konghanghang/ember/blob/master/docs/runbooks/deployment-troubleshooting.md) 的「备份与恢复」章节。
 
-生产部署前请先做一次完整的数据库备份。
+生产部署前请先做一次完整的数据库备份。大版本可能还有额外步骤，例如 `v2.2.0` 的分组权益迁移；先读主仓对应 [Release Notes](https://github.com/konghanghang/ember/releases)，再执行 `pull`。
 
 ## 升级前自检
 
 - 已备份 PostgreSQL 数据
 - 已查看主仓 [Releases](https://github.com/konghanghang/ember/releases) 看本次升级是否有破坏性变更说明
 - 已确认 `.env` 里的密钥没被替换（特别是 `JWT_SECRET` 和 `CONFIG_ENCRYPTION_KEY`，换值会导致登录态失效或敏感配置无法解密）
+- 启用 Gateway 时，已确认 API 与 Gateway 使用同一个镜像 tag，不要只升级其中一个
 
 ## 相关文档
 
@@ -92,3 +100,5 @@ Ember 的迁移是 forward-only：
 - [部署指南（主仓真相源）](https://github.com/konghanghang/ember/blob/master/docs/runbooks/deployment.md)
 - [部署环境与配置（主仓）](https://github.com/konghanghang/ember/blob/master/docs/runbooks/deployment-environment.md)
 - [数据库迁移说明（主仓）](https://github.com/konghanghang/ember/blob/master/infrastructure/database/README.md)
+- [权益升级与验收（主仓）](https://github.com/konghanghang/ember/blob/master/docs/runbooks/entitlements-upgrade.md)
+- [GitHub Releases](https://github.com/konghanghang/ember/releases)

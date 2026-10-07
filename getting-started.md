@@ -10,8 +10,9 @@
 
 - 管理 Emby 用户账号、有效期和启停状态
 - 支持开放注册或兑换码注册
+- 支持限时或永久套餐，账号可同时持有多个分组权益
 - 支持兑换码续期和 Stripe 支付
-- 通过 Telegram Bot 提供绑定、查询、兑换和通知
+- 通过 Telegram Bot 提供绑定、查询、兑换、媒体库偏好和通知
 - 提供求片订阅、播放排行、追剧日历等运营能力
 
 如果你只需要一个纯静态的 Emby 登录页，或者完全不打算接 Telegram / 支付 / 运营功能，那 Ember 可能偏重。
@@ -22,27 +23,29 @@
 
 打开 [概览](./features/dashboard.md)，确认：
 
-- 当前账号是否有效
+- 当前账号是有效、永久有效，还是已过期
 - 到期时间是否正常
-- Telegram 是否已经绑定
 - 服务器入口是否可见
+- 最近入库了哪些电影或剧集
 
 如果你一上来就发现自己已经过期，不要乱翻，直接去 [续费中心](./features/payments.md)。
 
 ### 2. 再看账号中心
 
-打开 [账号中心](./features/account-center.md)，处理这三类事情：
+打开 [账号中心](./features/account-center.md)，处理这些事情：
 
+- 查看当前持有权益和生效分组
 - 补齐联系邮箱
 - 修改密码
 - 生成 Telegram 绑定验证码
+- 按需要调整媒体库偏好或绑定 115 播放账号
 
 ### 3. 决定你接下来走哪条路径
 
 你通常会落到下面几条路径之一：
 
 - 想先知道装哪个播放器：先看 [播放器推荐](./features/players.md)
-- 想继续看片：先看 [媒体库](./features/library.md)
+- 想继续看片：先看 [概览](./features/dashboard.md) 里的最近入库
 - 想找热门内容：先看 [播放排行榜](./features/rankings.md)
 - 想申请想看的片：先看 [订阅管理](./features/subscriptions.md)
 - 想追连载：先看 [追剧日历](./features/tv-calendar.md)
@@ -62,7 +65,8 @@
 ## 常见第一步误区
 
 - 账号过期时，不要以为系统坏了，先去看续费中心
-- 媒体库不是完整搜索页，它更适合看最近入库
+- 公益套餐要保持最近 30 天内有观看记录，规则见 [续费中心](./features/payments.md)
+- 最近入库在概览里，不是完整搜索页
 - 订阅管理是“提需求”，不是“立即观看”
 - Bot 是第二入口，不是主站替代品
 - 登录、注册和找回密码是独立入口，不在控制台内部
@@ -77,3 +81,12 @@
 ## 不是普通用户？
 
 想自部署 Ember 或贡献代码：看 [开发者指南](./developer/)。
+
+## 相关文档
+
+- [登录、注册与找回密码](./features/account-access.md)
+- [功能地图](./features/overview.md)
+- [控制台总览](./features/user-console.md)
+- [续费中心](./features/payments.md)
+- [Telegram Bot](./features/telegram-bot.md)
+- [开发者指南](./developer/)

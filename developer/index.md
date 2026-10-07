@@ -11,6 +11,7 @@
 ## 你想做什么
 
 - 想 5 步把站点跑起来：看 [Docker Compose 部署](./deployment/docker-compose.md)
+- 想启用 Playback Gateway：看 [Docker Compose 部署](./deployment/docker-compose.md) 的 Gateway 小节
 - 想理解 Ember 的服务结构：看 [架构总览](./architecture/overview.md)
 - 想理解每个服务的职责：看 [服务边界](./architecture/services.md)
 - 想知道 Ember 接了哪些外部系统：看 [外部集成](./architecture/integrations.md)

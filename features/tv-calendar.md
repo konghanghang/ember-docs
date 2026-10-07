@@ -65,4 +65,4 @@
 ## 相关文档
 
 - [订阅管理](./subscriptions.md)
-- [媒体库](./library.md)
+- [概览](./dashboard.md)

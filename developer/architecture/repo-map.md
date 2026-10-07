@@ -7,7 +7,7 @@
 ```
 ember/
 ├── services/
-│   ├── api/                # Go API 服务
+│   ├── api/                # Go API 与 Playback Gateway（同一二进制）
 │   ├── web/                # Vue 3 前端
 │   └── bot/                # Python Telegram Bot
 ├── infrastructure/
@@ -26,7 +26,8 @@ ember/
 | 层 | 技术 |
 |----|------|
 | 后端 | Go 1.23 + Gin + GORM |
-| 数据库 | PostgreSQL 15 |
+| 数据库 | PostgreSQL 16（Compose 默认 `postgres:16-alpine`） |
+| 缓存 | Redis（仅 `gateway` profile） |
 | 前端 | Vue 3 + TypeScript + Element Plus + Tailwind CSS |
 | Bot | Python 3.11 + python-telegram-bot + FastAPI |
 | 支付 | Stripe（一次性支付，Checkout Session 模式） |
@@ -47,6 +48,7 @@ ember/
 | 你想改 | 入口 |
 |--------|------|
 | 业务接口、定时任务、外部集成 | `services/api/` |
+| Playback Gateway、115 播放代理 | `services/api/internal/playbackgateway/` |
 | 控制台页面、管理后台、前端样式 | `services/web/` |
 | Telegram 命令、通知格式化 | `services/bot/` |
 | 数据库 schema | `infrastructure/database/`（追加新的 forward-only SQL） |
